@@ -22,22 +22,25 @@ var game = {
 		this.move = this.move === this.moves.x ? this.moves.o : this.moves.x;
 	},
 	onClick: function(e) {
+
 		// понять, по какой ячейке произошёл клик
 		var row = e.target.getAttribute('data-row');
 		var col = e.target.getAttribute('data-col');
 
-		// запомнить выбор
-		this.board[row][col] = this.move;
-		
 		// ставим крестик или нолик в зависимости от того, кто ходит
-		e.target.innerHTML = this.move;
+		if ( !this.board[row][col] ) {
 
-		// проверка на победу
-		if ( !this.checkVictory() ) {
-			// если нет победы, смена хода
-			this.changeMove();
-		} else {
-			this.exit();
+			// запомнить выбор
+			e.target.innerHTML = this.move;
+			this.board[row][col] = this.move;
+				
+			// проверка на победу
+			if ( !this.checkVictory() ) {
+				// если нет победы, смена хода
+				this.changeMove();
+			} else {
+				this.exit();
+			}
 		}
 	},
 	checkVictory: function() {
@@ -66,13 +69,16 @@ var game = {
 		return false;
 	},
 	run: function() {
+
 		// установили первый ход
 		this.move = this.moves.x;
+
 		// ждём клика на поле
 		this.setEvents();
 	},
 	exit: function() {
 		alert('Победили ' + this.move);
+		window.location.reload();
 	}
 };
 

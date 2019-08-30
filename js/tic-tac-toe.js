@@ -22,9 +22,14 @@ var game = {
 		// понять, по какой ячейке произошёл клик
 		var row = e.target.getAttribute('data-row');
 		var col = e.target.getAttribute('data-col');
+
+		// ставим крестик или нолик в зависимости от того, кто ходит
+		e.target.innerHTML = this.move;
 	},
 	run: function() {
-		console.log(this.board);
+		// установили первый ход
+		this.move = this.moves.x;
+		// ждём клика на поле
 		this.setEvents();
 	}
 };

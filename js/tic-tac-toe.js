@@ -18,6 +18,9 @@ var game = {
 			td[i].addEventListener('click', this.onClick.bind(this));
 		}
 	},
+	changeMove: function() {
+		this.move = this.move === this.moves.x ? this.moves.o : this.moves.x;
+	},
 	onClick: function(e) {
 		// понять, по какой ячейке произошёл клик
 		var row = e.target.getAttribute('data-row');
@@ -25,6 +28,8 @@ var game = {
 
 		// ставим крестик или нолик в зависимости от того, кто ходит
 		e.target.innerHTML = this.move;
+
+		// если 
 	},
 	run: function() {
 		// установили первый ход

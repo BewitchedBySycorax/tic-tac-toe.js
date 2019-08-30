@@ -45,6 +45,9 @@ var game = {
 		this.move = this.moves.x;
 		// ждём клика на поле
 		this.setEvents();
+	},
+	exit: function() {
+		alert('Победили ' + this.move);
 	}
 };
 

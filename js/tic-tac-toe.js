@@ -40,6 +40,31 @@ var game = {
 			this.exit();
 		}
 	},
+	checkVictory: function() {
+		var rules = [
+			[{y: 0, x: 0}, {y: 0, x: 1}, {y: 0, x: 2}],
+			[{y: 1, x: 0}, {y: 1, x: 1}, {y: 1, x: 2}],
+			[{y: 2, x: 0}, {y: 2, x: 1}, {y: 2, x: 2}],
+
+			[{y: 0, x: 0}, {y: 1, x: 0}, {y: 2, x: 0}],
+			[{y: 0, x: 1}, {y: 1, x: 1}, {y: 2, x: 1}],
+			[{y: 0, x: 2}, {y: 1, x: 2}, {y: 2, x: 2}],
+
+			[{y: 0, x: 0}, {y: 1, x: 1}, {y: 2, x: 2}],
+			[{y: 2, x: 0}, {y: 1, x: 1}, {y: 0, x: 2}],
+		];
+
+		for ( var rule, i = 0; i < rules.length; i++ ) {
+			rule = rules[i];
+
+			if ( this.board[rule[0].y][rule[0].x] &&
+				this.board[rule[0].y][rule[0].x] === this.board[rule[1].y][rule[1].x] &&
+				this.board[rule[0].y][rule[0].x] === this.board[rule[2].y][rule[2].x] ) {
+					return true;
+			}
+		}
+		return false;
+	},
 	run: function() {
 		// установили первый ход
 		this.move = this.moves.x;

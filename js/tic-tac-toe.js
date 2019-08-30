@@ -26,10 +26,14 @@ var game = {
 		var row = e.target.getAttribute('data-row');
 		var col = e.target.getAttribute('data-col');
 
+		// запомнить выбор
+		this.board[row][col] = this.move;
+		
 		// ставим крестик или нолик в зависимости от того, кто ходит
 		e.target.innerHTML = this.move;
 
 		// проверка на победу
+
 			// если нет победы
 			this.changeMove();
 	},

@@ -1,6 +1,4 @@
-﻿"use strict";
-
-var game = {
+﻿var game = {
 	move: false,
 	moves: {
 		x: 'X',

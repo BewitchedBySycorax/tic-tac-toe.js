@@ -33,9 +33,12 @@ var game = {
 		e.target.innerHTML = this.move;
 
 		// проверка на победу
-
-			// если нет победы
+		if ( !this.checkVictory() ) {
+			// если нет победы, смена хода
 			this.changeMove();
+		} else {
+			this.exit();
+		}
 	},
 	run: function() {
 		// установили первый ход
